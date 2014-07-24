@@ -1,0 +1,24 @@
+% layout 'default';
+% title "#$channel IRC Logs for $year-$month-$day";
+
+<div id="log-header">
+	<div style="float: right">
+		Back to 
+		<a href="/">Home</a> /
+		<a href="/<%= $channel %>/">#<%= $channel%></a> /
+		<a href="/<%= $channel %>/<%= $year %>/"><%= $year %></a> /
+		<a href="/<%= $channel %>/<%= $year %>/<%= $month %>"><%= $month %></a> /
+		<% if ($prev_lnk) { %><a href="<%= $prev_lnk %>">Prev Day</a><% } %>
+		<% if ($prev_lnk && $next_lnk) { %> | <% } %>
+		<% if ($next_lnk) { %><a href="<%= $next_lnk %>">Next Day</a><% } %>
+	</div>
+	#<%= $channel %> IRC Logs for <%= "$year-$month-$day" %>
+</div>
+<br/>
+
+<table border="0" width="100%" class="irc" cellspacing="1" cellpadding="1">
+% for my $line (@$parsed_lines) {
+%	my ( $time, $nick, $tclass, $text ) = @$line;
+<tr><td class="time"><%== $time %></td><td class="nick"><%== $nick %></td><td class="<%= $tclass %>"><%== $text %></td></tr>
+% }
+</table>

@@ -1,0 +1,15 @@
+% layout 'default';
+% title "#$channel IRC Logs for $year-$month";
+<div id="log-header">
+	<div style="float: right">
+		Back to 
+		<a href="/">Home</a> /
+		<a href="/<%= $channel %>/">#<%= $channel%></a> /
+		<a href="/<%= $channel %>/<%= $year %>/"><%= $year %></a>
+	</div>
+</div>
+<br/>
+
+<h1>#<%= $channel %> IRC Logs for <%= $year %>/<%= $month %></h1>
+
+<%== $month_html %>

@@ -1,0 +1,12 @@
+% layout 'default';
+% title 'IRC logs for the viewing';
+% my ($year, $month, $day) = (localtime)[5, 4, 3];
+% my $today = sprintf( '%4i/%02i/%02i', $year + 1900, $month + 1, $day );
+<h1>Available Logs</h1>
+
+<ul>
+% for my $channel (qw(linode debian xen uml openttd)) {
+	<li><a href="/<%= $channel %>/">#<%= $channel %></a> - <a href="/<%= $channel %>/<%= $today %>#end">Jump to Now</a></li>
+% }
+	<li><a href="/mythtv/">#mythtv</a> - Older logs from 2002-2008 are available</li>
+</ul>

@@ -1,0 +1,15 @@
+% layout 'default';
+% title "#$channel IRC Logs";
+<h1>#<%= $channel %> IRC Logs</h1>
+
+Logs are available in the following years:
+<ul>
+% for my $year (@$years) {
+	<li><a href="/<%= $channel %>/<%= $year %>"><%= $year %></a></li>
+% }
+</ul>
+
+% my ($year, $month, $day) = (localtime)[5, 4, 3];
+% my $today = sprintf( '%4i/%02i/%02i', $year + 1900, $month + 1, $day );
+
+Or, <a href="/<%= $channel %>/<%= $today %>#end">Jump to now</a>
