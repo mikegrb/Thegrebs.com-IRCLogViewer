@@ -4,6 +4,7 @@ use 5.010;
 
 use warnings;
 use strict;
+no warnings 'experimental::smartmatch';
 
 use URI::Find;
 use Data::Dumper;

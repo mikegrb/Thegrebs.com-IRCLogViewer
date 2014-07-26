@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use 5.010;
 
+no warnings 'experimental::smartmatch';
+
 use base 'Mojolicious::Controller';
 
 use Data::Dumper;
@@ -108,7 +110,7 @@ sub _stash_rel_day_link {
 sub _get_file_path {
     my ( $self, $channel, $year, $month, $day ) = @_;
     return
-          $self->stash('config')->{log_path} . '/#' 
+          $TheGrebs::IRC::Logs::log_path . '/#'
         . $channel . '/'
         . join '.',
         $year, $month, $day;
