@@ -10,10 +10,9 @@ use TheGrebs::IRC::Logs;
 sub startup {
     my $self = shift;
 
-    $self->secret("lmk23ro;rinfc<Wq4ihr2oi3nfqlekihr2oi3nfqlekn>");
-    my $config = $self->plugin('config');
+    my $config = $self->plugin('config', { file => 'TGIRC.conf'});
 
-    $TheGrebs::IRC::Logs::log_path = $config->{log_path};
+    $TheGrebs::IRC::Logs::log_path = $ENV{TGIRC_LOG_PATH} || $config->{log_path};
 
     # Routes
     my $r = $self->routes;
