@@ -5,6 +5,7 @@ use 5.010;
 use strict;
 use warnings;
 
+use POSIX;
 use TheGrebs::IRC::Logs;
 
 sub startup {

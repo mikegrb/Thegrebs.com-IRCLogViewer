@@ -1,7 +1,6 @@
 % layout 'default';
 % title 'IRC logs for the viewing';
-% my ($year, $month, $day) = (localtime)[5, 4, 3];
-% my $today = sprintf( '%4i/%02i/%02i', $year + 1900, $month + 1, $day );
+% my $today = POSIX::strftime('%Y/%m/%d', localtime);
 <h1>Available Logs</h1>
 
 <ul>
