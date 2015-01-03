@@ -119,8 +119,8 @@ sub _get_file_path {
 sub _validate_channel {
     my $self    = shift;
     my $channel = $self->stash('channel');
-    $self->render( text => "not allowed" )
-        unless $channel ~~ $self->stash('config')->{allowed_channels};
+    $self->render( text => "not allowed", status => 403 )
+        unless $channel ~~ $TGIRC::allowed_channels;
 }
 
 1;

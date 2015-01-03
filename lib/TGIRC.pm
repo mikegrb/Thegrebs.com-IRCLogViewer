@@ -8,12 +8,18 @@ use warnings;
 use POSIX;
 use TheGrebs::IRC::Logs;
 
+our $allowed_channels;
+
 sub startup {
     my $self = shift;
 
     my $config = $self->plugin('config', { file => 'TGIRC.conf'});
 
     $TheGrebs::IRC::Logs::log_path = $ENV{TGIRC_LOG_PATH} || $config->{log_path};
+    $allowed_channels = $config->{allowed_channels};
+    if ( $ENV{TGIRC_CHANNELS} ) {
+        $allowed_channels = [ split /,/, $ENV{TGIRC_CHANNELS} ];
+    }
 
     # Routes
     my $r = $self->routes;
