@@ -4,7 +4,8 @@ use 5.010;
 
 use warnings;
 use strict;
-no warnings 'experimental::smartmatch';
+
+no if $] >= 5.017011, warnings => 'experimental::smartmatch';
 
 use URI::Find;
 use Data::Dumper;

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.010;
 
-no warnings 'experimental::smartmatch';
+no if $] >= 5.017011, warnings => 'experimental::smartmatch';
 
 use base 'Mojolicious::Controller';
 
