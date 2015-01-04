@@ -4,10 +4,9 @@
 <h1>Available Logs</h1>
 
 <ul>
-% for my $channel (qw(linode debian xen uml openttd)) {
+% for my $channel ( @$TGIRC::channels_on_index ) {
 	<li><a href="/<%= $channel %>/">#<%= $channel %></a> - <a href="/<%= $channel %>/<%= $today %>#end">Jump to Now</a></li>
 % }
-	<li><a href="/mythtv/">#mythtv</a> - Older logs from 2002-2008 are available</li>
 </ul>
 
 <h3>Report bugs or criticize source on <a href="https://github.com/mikegrb/Thegrebs.com-IRCLogViewer">GitHub</a></h3>

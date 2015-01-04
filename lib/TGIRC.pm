@@ -8,7 +8,7 @@ use warnings;
 use POSIX;
 use TheGrebs::IRC::Logs;
 
-our $allowed_channels;
+our ( $allowed_channels, $channels_on_index );
 
 sub startup {
     my $self = shift;
@@ -16,10 +16,9 @@ sub startup {
     my $config = $self->plugin('config', { file => 'TGIRC.conf'});
 
     $TheGrebs::IRC::Logs::log_path = $ENV{TGIRC_LOG_PATH} || $config->{log_path};
-    $allowed_channels = $config->{allowed_channels};
-    if ( $ENV{TGIRC_CHANNELS} ) {
-        $allowed_channels = [ split /,/, $ENV{TGIRC_CHANNELS} ];
-    }
+    $allowed_channels = $ENV{TGIRC_CHANNELS} ? [ split /,/, $ENV{TGIRC_CHANNELS} ] : $config->{allowed_channels};
+    $channels_on_index
+      = $ENV{TGIRC_CHANNELS_INDEX} ? [ split /,/, $ENV{TGIRC_CHANNELS_INDEX} ] : $config->{channels_on_index};
 
     # Routes
     my $r = $self->routes;
